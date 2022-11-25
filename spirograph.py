@@ -6,7 +6,8 @@ import turtle
 import random
 from PIL import Image
 from datetime import datetime
-from fractions import gcd
+
+from math import gcd
 
 
 class Spiro:
@@ -77,10 +78,10 @@ class SpiroAnimator:
         self.height = turtle.window_height()
         self.spiros = []
         for i in range(N):
-            rparams = self.genRandomParams()
+            rparams = self.ganRandomParams()
             spiro = Spiro(*rparams)
             self.spiros.append(spiro)
-        turtle.ontimer(self.update, self.deltaT)
+        turtle.ontimer(self.update, self.deltaD)
 
     def ganRandomParams(self):
         width, height = self.width, self.height
@@ -107,7 +108,7 @@ class SpiroAnimator:
                 nComplete += 1
         if nComplete == len(self.spiros):
             self.restart()
-        turtle.ontimer(self.update, self.deltaT)
+        turtle.ontimer(self.update, self.deltaD)
 
     def toggleTurtles(self):
         for spiro in self.spiros:
